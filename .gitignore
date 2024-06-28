@@ -53,3 +53,10 @@ node_modules/
 temp/
 tmp/
 *.tmp
+
+# Ignore secrets directory in each service
+api-gateway/secrets/*
+auth-service/secrets/*
+image-upload-service/secrets/*
+user-management-service/secrets/*
+
