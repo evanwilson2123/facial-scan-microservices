@@ -1,0 +1,55 @@
+# Ignore Go binary
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Ignore dependency directories
+vendor/
+
+# Ignore build outputs
+*.out
+
+# Ignore environment variables files
+*.env
+
+# Ignore service account keys and other sensitive data
+secrets/*.json
+
+# Ignore build artifacts
+**/bin/
+**/obj/
+**/pkg/
+
+# Ignore editor directories and files
+.vscode/
+.idea/
+*.swp
+*~
+.project
+.classpath
+.cache
+*.tmproj
+*.tm_build_errors
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore Kubernetes deployment files if you do not want to include them in the repo
+# Comment out if you want to include these files
+*.yaml
+
+# Ignore Go module files
+go.sum
+
+# Ignore log files
+*.log
+
+# Ignore node_modules (if you have frontend or any node.js dependencies)
+node_modules/
+
+# Ignore temporary files
+temp/
+tmp/
+*.tmp
