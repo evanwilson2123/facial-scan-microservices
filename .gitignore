@@ -60,3 +60,7 @@ auth-service/secrets/*
 image-upload-service/secrets/*
 user-management-service/secrets/*
 
+*/secrets
+
+*.json
+

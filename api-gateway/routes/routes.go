@@ -34,7 +34,7 @@ func SetupRoutes(app *fiber.App) {
 			})
 		}
 
-		response, statusCode, err := utils.ConsumeKafkaMessage("user-registration-response", user.Email, 2 * time.Minute)
+		response, statusCode, err := utils.ConsumeKafkaMessage("user-registration-response", user.Email, 2 * time.Second)
 		if err != nil {
 			return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
 				"error":"Error consuming message from Kafka",
