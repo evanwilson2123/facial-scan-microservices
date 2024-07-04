@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const API_KEY = "sk-proj-5x3uM44hnEHEiiKPuIsDT3BlbkFJhfaNhDmL3rpmdE5fmvr0";
+const API_KEY = process.env.API_KEY;
 const IMAGE_URL = process.env.IMAGE_URL;
 
 const configuration = {
