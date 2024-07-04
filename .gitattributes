@@ -1,0 +1,15 @@
+# Set language for Go microservices
+api-gateway/**/*.go linguist-language=Go
+auth-service/**/*.go linguist-language=Go
+image-upload-service/**/*.go linguist-language=Go
+leaderboard-service/**/*.go linguist-language=Go
+user-management-service/**/*.go linguist-language=Go
+
+# Set language for Node.js microservice
+image-processing-service/**/*.js linguist-language=JavaScript
+
+# Exclude non-code files from language statistics
+**/*.yaml linguist-vendored
+**/*.yml linguist-vendored
+**/*.md linguist-documentation
+**/.gitignore linguist-vendored
