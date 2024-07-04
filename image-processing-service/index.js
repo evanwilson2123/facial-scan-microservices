@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.GPT_KEY;
 const IMAGE_URL = process.env.IMAGE_URL;
 
 const configuration = {

@@ -74,3 +74,30 @@ func CheckUserHasUsername(uid string) (bool, error) {
 	log.Printf("User has username: %v for UID: %s\n", hasUsername, uid)
 	return hasUsername, nil
 }
+
+func UpdateUserHighScore(uid string, highScore float64) error {
+	ctx := context.Background()
+
+	log.Printf("Updating high score for UID: %s\n", uid)
+	docRef := utils.FirestoreClient.Collection("users").Doc(uid)
+	doc, err := docRef.Get(ctx)
+	if err != nil {
+		log.Printf("Error getting user document for UID %s: %v\n", uid, err)
+		return err
+	}
+
+	var user models.User
+	if err := doc.DataTo(&user); err != nil {
+		log.Printf("Error unmarshalling user data for UID %s: %v\n", uid, err)
+		return err
+	}
+
+	user.HighScore = highScore
+	if _, err := docRef.Set(ctx, user); err != nil {
+		log.Printf("Error updating high score for UID %s: %v\n", uid, err)
+		return err
+	}
+
+	log.Printf("High score updated successfully for UID: %s\n", uid)
+	return nil
+}

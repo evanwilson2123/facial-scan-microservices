@@ -106,6 +106,28 @@ func (h ConsumerGroupHandler) ConsumeClaim(sess sarama.ConsumerGroupSession, cla
 			}
 			produceResponseMessage(response, "username-check-response", check.UID)
 			sess.MarkMessage(msg, "")
+		case "image-processing-response":
+			var imageResponse struct {
+				UserId     string  `json:"user_id"`
+				TotalScore float64 `json:"total_score"`
+			}
+			err := json.Unmarshal(msg.Value, &imageResponse)
+			if err != nil {
+				log.Printf("Error unmarshalling message: %v", err)
+				continue
+			}
+			err = controllers.UpdateUserHighScore(imageResponse.UserId, imageResponse.TotalScore)
+			if err != nil {
+				log.Printf("Error updating user high score: %v", err)
+				continue
+			}
+			response := map[string]interface{}{
+				"message":    "High score updated successfully",
+				"userId":     imageResponse.UserId,
+				"statusCode": http.StatusOK,
+			}
+			produceResponseMessage(response, "high-score-update-response", imageResponse.UserId)
+			sess.MarkMessage(msg, "")
 		}
 	}
 	return nil
