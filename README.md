@@ -28,11 +28,6 @@ This repository is a work-in-progress project that implements a microservices ar
 - Produces messages to Kafka with the image URL for further processing.
 - Listens to Kafka topics for image uploads and processes them.
 
-## Planned Functionality
-
-- **Image Processing Service**: This service will process uploaded images to calculate facial symmetry and other metrics. It will consume messages from Kafka, perform the necessary image analysis, and then produce a response message with the results.
-- **Leaderboard Service**: This service will maintain a leaderboard of users based on their facial scan scores. It will consume messages from Kafka to update the leaderboard and provide endpoints to fetch leaderboard data.
-- **Notification Service**: This service will handle sending notifications to users based on various events (e.g., when their image processing results are ready, when they achieve a new high score).
 
 ## Architecture
 
